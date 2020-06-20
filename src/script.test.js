@@ -2,20 +2,30 @@ const {
   heat
 } = require('./script');
 
-
-test('outputs boiling if guess is within 1% of number', () => {
-  const number = 50;
-  const guess = 51;
-  expect(heat(guess)).toBe('boiling');
+it('outputs correct if guess is correct', () => {
+  expect(heat(100)).toBe('correct');
 });
 
-/*
-Pick a random number from 1-100
-Pick up guess from html
-Output whether it's hot or cold:
-  Boiling = within 1%
-  Hot = within 5%
-  Warm = within 10%
-  Cold = between 11 and 94 %
-  Freezing = 95% out
-*/
+it('outputs boiling if guess is within 1%', () => {
+  expect(heat(99)).toBe('boiling');
+});
+
+it('outputs hot if guess is within 5%', () => {
+  expect(heat(98)).toBe('hot');
+  expect(heat(95)).toBe('hot');
+});
+
+it('outputs warm if guess is within 10%', () => {
+  expect(heat(90)).toBe('warm');
+  expect(heat(94)).toBe('warm');
+});
+
+it('outputs cold if guess is within 94%', () => {
+  expect(heat(89)).toBe('cold');
+  expect(heat(6)).toBe('cold');
+});
+
+it('outputs freezing if guess is 95% or more out', () => {
+  expect(heat(5)).toBe('freezing');
+  expect(heat(1)).toBe('freezing');
+});
