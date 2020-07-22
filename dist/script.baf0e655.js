@@ -138,8 +138,6 @@ if ("development" !== 'test') {
 }
 
 function heat(guess, number) {
-  var check = guess - number;
-
   if (Math.abs(guess - number) === 0) {
     return 'correct';
   }
@@ -156,11 +154,11 @@ function heat(guess, number) {
     return 'warm';
   }
 
-  if (Math.abs(guess - number) <= 94) {
+  if (Math.abs(guess - number) <= 50) {
     return 'cold';
   }
 
-  if (Math.abs(guess - number) >= 95) {
+  if (Math.abs(guess - number) >= 75) {
     return 'freezing';
   }
 } // eslint-disable-next-line no-undef

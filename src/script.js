@@ -18,7 +18,6 @@ if (process.env.NODE_ENV !== 'test') { //Ignore this in Jest
 }
 
 function heat(guess,number) {
-  const check = guess - number
   if (Math.abs(guess - number) === 0) {
     return 'correct';
   }
@@ -31,10 +30,10 @@ function heat(guess,number) {
   if (Math.abs(guess - number) <= 10) {
     return 'warm';
   }
-  if (Math.abs(guess - number) <= 94) {
+  if (Math.abs(guess - number) <= 50) {
     return 'cold';
   }
-  if (Math.abs(guess - number) >= 95) {
+  if (Math.abs(guess - number) >= 75) {
     return 'freezing';
   }
 }
