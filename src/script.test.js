@@ -2,63 +2,40 @@ const {
   heat
 } = require('./script');
 
-let  number = 100;
-
 it('outputs correct if guess is correct', () => {
-  expect(heat(100, number)).toBe('correct');
+  expect(heat(100, 100)).toBe('correct');
+  expect(heat(50, 50)).toBe('correct');
 });
 
 it('outputs boiling if guess is within 1', () => {
-  expect(heat(99, number)).toBe('boiling');
+  expect(heat(99, 100)).toBe('boiling');
+  expect(heat(49, 50)).toBe('boiling');
 });
 
 it('outputs hot if guess is within 5', () => {
-  expect(heat(98, number)).toBe('hot');
-  expect(heat(95, number)).toBe('hot');
+  expect(heat(98, 100)).toBe('hot');
+  expect(heat(95, 100)).toBe('hot');
+  expect(heat(45, 50)).toBe('hot');
+  expect(heat(55, 50)).toBe('hot');
 });
 
 it('outputs warm if guess is within 10', () => {
-  expect(heat(90, number)).toBe('warm');
-  expect(heat(94, number)).toBe('warm');
+  expect(heat(90, 100)).toBe('warm');
+  expect(heat(94, 100)).toBe('warm');
+  expect(heat(40, 50)).toBe('warm');
+  expect(heat(60, 50)).toBe('warm');
 });
 
 it('outputs cold if guess is within 50', () => {
-  expect(heat(50, number)).toBe('cold');
-  expect(heat(51, number)).toBe('cold');
+  expect(heat(50, 100)).toBe('cold');
+  expect(heat(51, 100)).toBe('cold');
+  expect(heat(39, 50)).toBe('cold');
+  expect(heat(61, 50)).toBe('cold');
+  expect(heat(1, 50)).toBe('cold');
+  expect(heat(100, 50)).toBe('cold');
 });
 
 it('outputs freezing if guess is 75 or more out', () => {
-  expect(heat(25, number)).toBe('freezing');
-  expect(heat(1, number)).toBe('freezing');
+  expect(heat(25, 100)).toBe('freezing');
+  expect(heat(1, 100)).toBe('freezing');
 });
-
-/* number = 50;
-
-it('outputs correct if guess is correct', () => {
-  expect(heat(50, number)).toBe('correct');
-});
-
-it('outputs boiling if guess is within 1%', () => {
-  expect(heat(49, number)).toBe('boiling');
-});
-
-it('outputs hot if guess is within 5%', () => {
-  expect(heat(98, number)).toBe('hot');
-  expect(heat(95, number)).toBe('hot');
-});
-
-it('outputs warm if guess is within 10%', () => {
-  expect(heat(90, number)).toBe('warm');
-  expect(heat(94, number)).toBe('warm');
-});
-
-it('outputs cold if guess is within 94%', () => {
-  expect(heat(89, number)).toBe('cold');
-  expect(heat(6, number)).toBe('cold');
-});
-
-it('outputs freezing if guess is 95% or more out', () => {
-  expect(heat(5, number)).toBe('freezing');
-  expect(heat(1, number)).toBe('freezing');
-});
- */
