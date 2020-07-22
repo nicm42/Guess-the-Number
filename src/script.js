@@ -1,7 +1,25 @@
-const number = 100;
+const guess = document.getElementById('guess');
+const submit = document.getElementById('submit');
 
-function heat(guess) {
-  if (guess === number) {
+function generateRandomNumber(min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+//Generate random number
+const number = generateRandomNumber(1, 100);
+console.log("number to guess = " + number);
+
+//Get the guess
+if (process.env.NODE_ENV !== 'test') { //Ignore this in Jest
+  submit.addEventListener('click', () => {
+    console.log("guess = " + guess.value);
+    console.log(heat(guess.value,number));
+  });
+}
+
+function heat(guess,number) {
+  const check = guess - number
+  if (Math.abs(guess - number) === 0) {
     return 'correct';
   }
   if (Math.abs(guess - number) === 1) {
@@ -20,10 +38,10 @@ function heat(guess) {
     return 'freezing';
   }
 }
+// eslint-disable-next-line no-undef
 exports.heat = heat;
 
 /*
-Pick a random number from 1-100
 Pick up guess from html
 Output whether it's hot or cold:
   Correct = if correct guess

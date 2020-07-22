@@ -118,24 +118,63 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/script.js":[function(require,module,exports) {
-//import '/src/style.scss';
-console.log("test");
-var text = 'hello world';
-console.log(text);
+var guess = document.getElementById('guess');
+var submit = document.getElementById('submit');
 
-function heat(x) {
-  return 'boiling';
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+} //Generate random number
+
+
+var number = generateRandomNumber(1, 100);
+console.log("number to guess = " + number); //Get the guess
+
+if ("development" !== 'test') {
+  //Ignore this in Jest
+  submit.addEventListener('click', function () {
+    console.log("guess = " + guess.value);
+    console.log(heat(guess.value, number));
+  });
 }
+
+function heat(guess, number) {
+  var check = guess - number;
+
+  if (Math.abs(guess - number) === 0) {
+    return 'correct';
+  }
+
+  if (Math.abs(guess - number) === 1) {
+    return 'boiling';
+  }
+
+  if (Math.abs(guess - number) <= 5) {
+    return 'hot';
+  }
+
+  if (Math.abs(guess - number) <= 10) {
+    return 'warm';
+  }
+
+  if (Math.abs(guess - number) <= 94) {
+    return 'cold';
+  }
+
+  if (Math.abs(guess - number) >= 95) {
+    return 'freezing';
+  }
+} // eslint-disable-next-line no-undef
+
 
 exports.heat = heat;
 /*
-Pick a random number from 1-100
 Pick up guess from html
 Output whether it's hot or cold:
+  Correct = if correct guess
   Boiling = within 1%
   Hot = within 5%
   Warm = within 10%
-  Cold = between 11 and 94 %
+  Cold = between 11 and 94%
   Freezing = 95% out
 */
 },{}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -166,7 +205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40643" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42025" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
