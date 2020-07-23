@@ -123,8 +123,10 @@ var submit = document.getElementById('submit');
 
 function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-} //Generate random number
+} // eslint-disable-next-line no-undef
 
+
+exports.generateRandomNumber = generateRandomNumber; //Generate random number
 
 var number = generateRandomNumber(1, 100);
 console.log("number to guess = " + number); //Get the guess
@@ -203,7 +205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42025" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37765" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

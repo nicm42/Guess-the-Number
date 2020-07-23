@@ -1,5 +1,6 @@
 const {
-  heat
+  heat,
+  generateRandomNumber
 } = require('./script');
 
 it('outputs correct if guess is correct', () => {
@@ -38,4 +39,12 @@ it('outputs cold if guess is within 50', () => {
 it('outputs freezing if guess is 75 or more out', () => {
   expect(heat(25, 100)).toBe('freezing');
   expect(heat(1, 100)).toBe('freezing');
+});
+
+
+it('generates a random number between min and maz', () => {
+  expect(generateRandomNumber(1, 100)).toBeGreaterThanOrEqual(1);
+  expect(generateRandomNumber(1, 100)).toBeLessThanOrEqual(100);
+  expect(generateRandomNumber(500, 600)).toBeGreaterThanOrEqual(500);
+  expect(generateRandomNumber(500, 600)).toBeLessThanOrEqual(600);
 });

@@ -4,6 +4,8 @@ const submit = document.getElementById('submit');
 function generateRandomNumber(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+// eslint-disable-next-line no-undef
+exports.generateRandomNumber = generateRandomNumber;
 
 //Generate random number
 const number = generateRandomNumber(1, 100);
