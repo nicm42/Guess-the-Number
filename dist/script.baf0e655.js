@@ -120,6 +120,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"src/script.js":[function(require,module,exports) {
 var guess = document.getElementById('guess');
 var submit = document.getElementById('submit');
+var temperature = document.querySelector('.temperature');
 
 function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -134,48 +135,45 @@ console.log("number to guess = " + number); //Get the guess
 if ("development" !== 'test') {
   //Ignore this in Jest
   submit.addEventListener('click', function () {
-    console.log("guess = " + guess.value);
-    console.log(heat(guess.value, number));
+    var heating = heat(guess.value, number);
+    outputHeat(heating);
   });
 }
 
 function heat(guess, number) {
   if (Math.abs(guess - number) === 0) {
-    return 'correct';
+    return 'Correct';
   }
 
   if (Math.abs(guess - number) === 1) {
-    return 'boiling';
+    return 'Boiling';
   }
 
   if (Math.abs(guess - number) <= 5) {
-    return 'hot';
+    return 'Hot';
   }
 
   if (Math.abs(guess - number) <= 10) {
-    return 'warm';
+    return 'Warm';
   }
 
   if (Math.abs(guess - number) <= 50) {
-    return 'cold';
+    return 'Cold';
   }
 
   if (Math.abs(guess - number) >= 75) {
-    return 'freezing';
+    return 'Freezing';
   }
 } // eslint-disable-next-line no-undef
 
 
 exports.heat = heat;
+
+function outputHeat(heating) {
+  temperature.innerText = heating;
+}
 /*
-Pick up guess from html
 Output whether it's hot or cold:
-  Correct = if correct guess
-  Boiling = within 1%
-  Hot = within 5%
-  Warm = within 10%
-  Cold = between 11 and 94%
-  Freezing = 95% out
 */
 },{}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
