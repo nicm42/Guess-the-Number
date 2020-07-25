@@ -33,7 +33,7 @@ function heat(guess,number) {
   if (Math.abs(guess - number) <= 10) {
     return 'Warm';
   }
-  if (Math.abs(guess - number) <= 50) {
+  if (Math.abs(guess - number) <= 74) {
     return 'Cold';
   }
   if (Math.abs(guess - number) >= 75) {
@@ -46,4 +46,10 @@ exports.heat = heat;
 function outputHeat(heating) {
   guess.value = '';  
   temperature.innerText = heating;
+  if (heating === 'Correct') {
+    const endMessage = document.createElement('p');
+    const endText = document.createTextNode('Congrats! Refresh the page to play again');
+    endMessage.appendChild(endText);
+    temperature.parentNode.insertBefore(endMessage, temperature.nextSibling);
+  }
 }

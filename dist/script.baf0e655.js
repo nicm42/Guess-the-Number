@@ -157,7 +157,7 @@ function heat(guess, number) {
     return 'Warm';
   }
 
-  if (Math.abs(guess - number) <= 50) {
+  if (Math.abs(guess - number) <= 74) {
     return 'Cold';
   }
 
@@ -172,6 +172,13 @@ exports.heat = heat;
 function outputHeat(heating) {
   guess.value = '';
   temperature.innerText = heating;
+
+  if (heating === 'Correct') {
+    var endMessage = document.createElement('p');
+    var endText = document.createTextNode('Congrats! Refresh the page to play again');
+    endMessage.appendChild(endText);
+    temperature.parentNode.insertBefore(endMessage, temperature.nextSibling);
+  }
 }
 },{}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
