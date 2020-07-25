@@ -44,5 +44,6 @@ function heat(guess,number) {
 exports.heat = heat;
 
 function outputHeat(heating) {
+  guess.value = '';  
   temperature.innerText = heating;
 }
