@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer');
 const {
   heat,
-  generateRandomNumber
+  generateRandomNumber,
+  outputHeat
 } = require('./script');
 
 it('outputs correct if guess is correct', () => {
@@ -58,12 +59,31 @@ test('should add temperature below the input', async () => {
   });
   const page = await browser.newPage();
   await page.goto('file:///home/paranoidangel/Projects/Guess the number/dist/index.html');
-   await page.click('input#guess');
-   await page.type('input#guess', '50');
-   await page.click('#submit');
-   const temperature = await page.$eval('.temperature', element => element.innerText = 'Cold');
-   expect(temperature).toBe('Cold');
-   await page.screenshot({
-     path: 'test.png'
-   })
+  await page.click('input#guess');
+  await page.type('input#guess', '50');
+  await page.click('#submit');
+  const temperature = await page.$eval('.temperature', element => element.innerText = 'Cold');
+  expect(temperature).toBe('Cold');
+  await page.screenshot({
+    path: 'test.png'
+  })
+}, 10000);
+
+test('should add message if guess is correct', async () => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    //slowMo: 80,
+    //args: ['--window-size=1920,1080']
+  });
+  const page = await browser.newPage();
+  await page.goto('file:///home/paranoidangel/Projects/Guess the number/dist/index.html');
+  await page.click('input#guess');
+  await page.type('input#guess', '100');
+  await page.click('#submit');
+  //await page.waitForSelector('.congrats');
+  const newText = await page.$eval('.congrats', element => element.textContent);
+  expect(newText).toBe('Congrats! Refresh the page to play again');
+  await page.screenshot({
+    path: 'test2.png'
+  })
 }, 10000);

@@ -123,7 +123,8 @@ var submit = document.getElementById('submit');
 var temperature = document.querySelector('.temperature');
 
 function generateRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  //return Math.floor(Math.random() * (max - min + 1)) + min;
+  return 100;
 } // eslint-disable-next-line no-undef
 
 
@@ -176,9 +177,12 @@ function outputHeat(heating) {
   if (heating === 'Correct') {
     guess.disabled = true;
     submit.disabled = true;
-    var endMessage = document.createElement('p');
-    var endText = document.createTextNode('Congrats! Refresh the page to play again');
-    endMessage.appendChild(endText);
+    var endMessage = document.createElement('p'); //const endText = document.createTextNode('Congrats! Refresh the page to play again');
+
+    endMessage.textContent = 'Congrats! Refresh the page to play again'; //endMessage.setAttribute('class', 'congrats')
+
+    endMessage.classList.add('congrats'); //endMessage.appendChild(endText);
+
     temperature.parentNode.insertBefore(endMessage, temperature.nextSibling);
   }
 }
@@ -210,7 +214,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40885" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36304" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
