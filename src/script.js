@@ -46,7 +46,3 @@ exports.heat = heat;
 function outputHeat(heating) {
   temperature.innerText = heating;
 }
-
-/*
-Output whether it's hot or cold:
-*/
