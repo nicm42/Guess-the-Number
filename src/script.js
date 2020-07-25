@@ -47,6 +47,8 @@ function outputHeat(heating) {
   guess.value = '';  
   temperature.innerText = heating;
   if (heating === 'Correct') {
+    guess.disabled = true;
+    submit.disabled = true;
     const endMessage = document.createElement('p');
     const endText = document.createTextNode('Congrats! Refresh the page to play again');
     endMessage.appendChild(endText);
