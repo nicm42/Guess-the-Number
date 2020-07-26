@@ -1,6 +1,18 @@
-const guess = document.getElementById('guess');
-const submit = document.getElementById('submit');
-const temperature = document.querySelector('.temperature');
+document.addEventListener('DOMContentLoaded', function () {
+  const guess = document.getElementById('guess');
+  const submit = document.getElementById('submit');
+  const temperature = document.querySelector('.temperature');
+
+  //Generate random number
+  const number = generateRandomNumber(1, 100);
+  console.log("number to guess = " + number);
+
+  //Get the guess
+  submit.addEventListener('click', () => {
+    let heating = heat(guess.value, number);
+    outputHeat(heating);
+  });
+});
 
 function generateRandomNumber(min, max){
   //return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -9,17 +21,6 @@ function generateRandomNumber(min, max){
 // eslint-disable-next-line no-undef
 exports.generateRandomNumber = generateRandomNumber;
 
-//Generate random number
-const number = generateRandomNumber(1, 100);
-console.log("number to guess = " + number);
-
-//Get the guess
-//if (process.env.NODE_ENV !== 'test') { //Ignore this in Jest
-  submit.addEventListener('click', () => {
-    let heating = heat(guess.value,number);
-    outputHeat(heating);
-  });
-//}
 
 function heat(guess,number) {
   if (Math.abs(guess - number) === 0) {
