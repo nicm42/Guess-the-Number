@@ -48,26 +48,30 @@ exports.heat = heat;
 
 function outputHeat(heating, guesses) {
   console.log(heating);
-  guess.value = '';
+
   const temperature = document.querySelector('.temperature');
   const newTemperature = document.createElement('li');
-  newTemperature.textContent = heating;
+  //newTemperature.textContent = heating;
   newTemperature.classList.add('history');
   if(guesses === 1){
     temperature.appendChild(newTemperature);
   } else {
     //Find first li
     const firstLI = document.querySelector('.history');
-    console.log(firstLI);
     temperature.insertBefore(newTemperature, firstLI);
   }
+  newTemperature.innerHTML = `<span class="history-number">${guesses}</span> <span class="guess-history">${guess.value}</span> <span class="heating-history">${heating}</span>`;
+
   if (heating === 'Correct') {
     guess.disabled = true;
     submit.disabled = true;
     const endMessage = document.createElement('p');
     endMessage.textContent = 'Congrats! Refresh the page to play again';
     endMessage.classList.add('congrats');
-    temperature.parentNode.insertBefore(endMessage, temperature.nextSibling);
+    document.body.insertBefore(endMessage, temperature);
   }
+
+  guess.value = '';
 }
+
 exports.outputHeat = outputHeat;
