@@ -118,28 +118,27 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/script.js":[function(require,module,exports) {
-var guess = document.getElementById('guess');
-var submit = document.getElementById('submit');
-var temperature = document.querySelector('.temperature');
+document.addEventListener('DOMContentLoaded', function () {
+  var guess = document.getElementById('guess');
+  var submit = document.getElementById('submit');
+  var guesses = 0; //Generate random number
+
+  var number = generateRandomNumber(1, 100);
+  console.log("number to guess = " + number); //Get the guess
+
+  submit.addEventListener('click', function () {
+    var heating = heat(guess.value, number);
+    guesses++;
+    outputHeat(heating, guesses);
+  });
+});
 
 function generateRandomNumber(min, max) {
-  //return Math.floor(Math.random() * (max - min + 1)) + min;
-  return 100;
+  return Math.floor(Math.random() * (max - min + 1)) + min; //return 100;
 } // eslint-disable-next-line no-undef
 
 
-exports.generateRandomNumber = generateRandomNumber; //Generate random number
-
-var number = generateRandomNumber(1, 100);
-console.log("number to guess = " + number); //Get the guess
-
-if ("development" !== 'test') {
-  //Ignore this in Jest
-  submit.addEventListener('click', function () {
-    var heating = heat(guess.value, number);
-    outputHeat(heating);
-  });
-}
+exports.generateRandomNumber = generateRandomNumber;
 
 function heat(guess, number) {
   if (Math.abs(guess - number) === 0) {
@@ -170,22 +169,34 @@ function heat(guess, number) {
 
 exports.heat = heat;
 
-function outputHeat(heating) {
+function outputHeat(heating, guesses) {
+  console.log(heating);
   guess.value = '';
-  temperature.innerText = heating;
+  var temperature = document.querySelector('.temperature');
+  var newTemperature = document.createElement('li');
+  newTemperature.textContent = heating;
+  newTemperature.classList.add('history');
+
+  if (guesses === 1) {
+    temperature.appendChild(newTemperature);
+  } else {
+    //Find first li
+    var firstLI = document.querySelector('.history');
+    console.log(firstLI);
+    temperature.insertBefore(newTemperature, firstLI);
+  }
 
   if (heating === 'Correct') {
     guess.disabled = true;
     submit.disabled = true;
-    var endMessage = document.createElement('p'); //const endText = document.createTextNode('Congrats! Refresh the page to play again');
-
-    endMessage.textContent = 'Congrats! Refresh the page to play again'; //endMessage.setAttribute('class', 'congrats')
-
-    endMessage.classList.add('congrats'); //endMessage.appendChild(endText);
-
+    var endMessage = document.createElement('p');
+    endMessage.textContent = 'Congrats! Refresh the page to play again';
+    endMessage.classList.add('congrats');
     temperature.parentNode.insertBefore(endMessage, temperature.nextSibling);
   }
 }
+
+exports.outputHeat = outputHeat;
 },{}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -214,7 +225,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36304" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45590" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

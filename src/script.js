@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const guess = document.getElementById('guess');
   const submit = document.getElementById('submit');
-  const temperature = document.querySelector('.temperature');
+
+  let guesses = 0;
 
   //Generate random number
   const number = generateRandomNumber(1, 100);
@@ -10,17 +11,17 @@ document.addEventListener('DOMContentLoaded', function () {
   //Get the guess
   submit.addEventListener('click', () => {
     let heating = heat(guess.value, number);
-    outputHeat(heating);
+    guesses++;
+    outputHeat(heating, guesses);
   });
 });
 
 function generateRandomNumber(min, max){
-  //return Math.floor(Math.random() * (max - min + 1)) + min;
-  return 100;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+  //return 100;
 }
 // eslint-disable-next-line no-undef
 exports.generateRandomNumber = generateRandomNumber;
-
 
 function heat(guess,number) {
   if (Math.abs(guess - number) === 0) {
@@ -45,19 +46,27 @@ function heat(guess,number) {
 // eslint-disable-next-line no-undef
 exports.heat = heat;
 
-function outputHeat(heating) {
+function outputHeat(heating, guesses) {
   console.log(heating);
-  guess.value = '';  
-  temperature.innerText = heating;
+  guess.value = '';
+  const temperature = document.querySelector('.temperature');
+  const newTemperature = document.createElement('li');
+  newTemperature.textContent = heating;
+  newTemperature.classList.add('history');
+  if(guesses === 1){
+    temperature.appendChild(newTemperature);
+  } else {
+    //Find first li
+    const firstLI = document.querySelector('.history');
+    console.log(firstLI);
+    temperature.insertBefore(newTemperature, firstLI);
+  }
   if (heating === 'Correct') {
     guess.disabled = true;
     submit.disabled = true;
     const endMessage = document.createElement('p');
-    //const endText = document.createTextNode('Congrats! Refresh the page to play again');
     endMessage.textContent = 'Congrats! Refresh the page to play again';
-    //endMessage.setAttribute('class', 'congrats')
     endMessage.classList.add('congrats');
-    //endMessage.appendChild(endText);
     temperature.parentNode.insertBefore(endMessage, temperature.nextSibling);
   }
 }

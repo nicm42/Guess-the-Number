@@ -51,7 +51,7 @@ it('generates a random number between min and max', () => {
   expect(generateRandomNumber(500, 600)).toBeLessThanOrEqual(600);
 });
 
-test('should add temperature below the input', async () => {
+/* test('should add temperature below the input', async () => {
   const browser = await puppeteer.launch({
     headless: true,
     //slowMo: 80,
@@ -67,9 +67,9 @@ test('should add temperature below the input', async () => {
   await page.screenshot({
     path: 'test.png'
   })
-}, 10000);
+}, 10000); */
 
-test('should add message if guess is correct', async () => {
+/* test('should add message if guess is correct', async () => {
   const browser = await puppeteer.launch({
     headless: true,
     //slowMo: 80,
@@ -86,4 +86,14 @@ test('should add message if guess is correct', async () => {
   await page.screenshot({
     path: 'test2.png'
   })
-}, 10000);
+}, 10000); */
+
+/* describe('Google', () => {
+  beforeAll(async () => {
+    await page.goto('https://google.co.uk');
+  });
+
+  it('should be titled "Google"', async () => {
+    await expect(page.title()).resolves.toMatch('Google');
+  });
+}); */
