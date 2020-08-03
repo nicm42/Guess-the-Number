@@ -51,6 +51,23 @@ it('generates a random number between min and max', () => {
   expect(generateRandomNumber(500, 600)).toBeLessThanOrEqual(600);
 });
 
+it.only('creates a new li element with the temperature when submit is clicked', () => {
+  // Set up our document body
+  document.body.innerHTML =
+    `<button id="submit" />
+    <ul id="temperature"></ul>`;
+  //jest.mock('generateRandomNumber');
+  //generateRandomNumber.mockImplementation(() => 100);
+  //outputHeat.mockImplementation(() => 50);
+  //const mockGenerateRandomNumber = jest.fn(() => 100);
+  //const mockOutputHeat = jest.fn(() => 50);
+  //Pretend we've clicked the button
+  const temp = document.getElementById('temperature');
+  document.getElementById('submit').click();
+  //expect(outputHeat).toBeCalled();
+  expect(temperature.innerHTML).toBe('<span class="history-number">1</span> <span class="guess-history">50</span> <span class="heating-history">Cold</span>');
+});
+
 /* test('should add temperature below the input', async () => {
   const browser = await puppeteer.launch({
     headless: true,
