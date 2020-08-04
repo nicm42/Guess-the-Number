@@ -1,5 +1,10 @@
 node_modules/
 .cache/
-cypress/
+cypress/fixtures
+cypress/integration/examples
+cypress/plugins
+cypress/screenshots
+cypress/support
+cypress/videos
 /dist/*.js.map
 test*.png
