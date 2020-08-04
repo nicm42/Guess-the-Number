@@ -134,7 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function generateRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min; //return 100;
+  //return Math.floor(Math.random() * (max - min + 1)) + min;
+  return 100;
 } // eslint-disable-next-line no-undef
 
 
