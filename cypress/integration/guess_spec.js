@@ -21,5 +21,17 @@ describe('Submit guess', () => {
     cy.contains('1 100 Correct');
     cy.get('.congrats').should('exist');
 	})
-})
 
+	it('Types in a two guesses and submits them', () => {
+	  cy.visit('http://localhost:1234');
+	  cy.get('#guess')
+	    .type('50')
+	  cy.get('#submit').click();
+	  cy.get('#guess')
+	    .type('90')
+	  cy.get('#submit').click();
+	  cy.contains('1 50 Cold');
+	  cy.contains('2 90 Warm');
+	})
+
+})
