@@ -47,11 +47,8 @@ function heat(guess,number) {
 exports.heat = heat;
 
 function outputHeat(heating, guesses) {
-  console.log(heating);
-
   const temperature = document.querySelector('.temperature');
   const newTemperature = document.createElement('li');
-  //newTemperature.textContent = heating;
   newTemperature.classList.add('history');
   if(guesses === 1){
     temperature.appendChild(newTemperature);

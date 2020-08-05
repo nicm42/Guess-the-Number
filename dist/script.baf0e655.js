@@ -171,10 +171,8 @@ function heat(guess, number) {
 exports.heat = heat;
 
 function outputHeat(heating, guesses) {
-  console.log(heating);
   var temperature = document.querySelector('.temperature');
-  var newTemperature = document.createElement('li'); //newTemperature.textContent = heating;
-
+  var newTemperature = document.createElement('li');
   newTemperature.classList.add('history');
 
   if (guesses === 1) {
@@ -228,7 +226,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38184" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39852" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
