@@ -7,15 +7,16 @@
   <title>Guess the Number</title>
 </head>
 <body>
-  <h1>Guess the Number</h1>
-  <p>The computer is thinking of a number between 1 and 100 (inclusive).
-  <br>Guess what that number is</p>
+  <main>
+    <h1>Guess the Number</h1>
+    <p>The computer is thinking of a number between 1 and 100 (inclusive).
+    <br>Guess what that number is</p>
 
-  <label for="guess"></label>
-  <input type="number" id="guess" name="guess" min="1" max="100"></input>
-  <button id="submit">Guess</button>
-  
-  <ul class="temperature"></ul>
+    <input type="number" id="guess" name="guess" min="1" max="100" aria-label="Guess"></input>
+    <button id="submit">Guess</button>
+    
+    <ul class="temperature"></ul>
+  </main>
 
   <script src="./src/script.js"></script>
 </body>

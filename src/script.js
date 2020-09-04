@@ -1,3 +1,5 @@
+//TODO - check there's something in the form before allowing submit
+
 document.addEventListener('DOMContentLoaded', function () {
   const guess = document.getElementById('guess');
   const submit = document.getElementById('submit');
@@ -65,7 +67,7 @@ function outputHeat(heating, guesses) {
     const endMessage = document.createElement('p');
     endMessage.textContent = 'Congrats! Refresh the page to play again';
     endMessage.classList.add('congrats');
-    document.body.insertBefore(endMessage, temperature);
+    document.querySelector('main').insertBefore(endMessage, temperature);
   }
 
   guess.value = '';

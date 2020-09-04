@@ -118,6 +118,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/script.js":[function(require,module,exports) {
+//TODO - check there's something in the form before allowing submit
 document.addEventListener('DOMContentLoaded', function () {
   var guess = document.getElementById('guess');
   var submit = document.getElementById('submit');
@@ -191,7 +192,7 @@ function outputHeat(heating, guesses) {
     var endMessage = document.createElement('p');
     endMessage.textContent = 'Congrats! Refresh the page to play again';
     endMessage.classList.add('congrats');
-    document.body.insertBefore(endMessage, temperature);
+    document.querySelector('main').insertBefore(endMessage, temperature);
   }
 
   guess.value = '';
