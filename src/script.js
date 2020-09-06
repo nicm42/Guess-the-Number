@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function generateRandomNumber(min, max){
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-  //return 100; //for testing
+  //return Math.floor(Math.random() * (max - min + 1)) + min;
+  return 100; //for testing TODO
 }
 // eslint-disable-next-line no-undef
 exports.generateRandomNumber = generateRandomNumber;
@@ -54,6 +54,28 @@ function outputHeat(heating, guesses) {
   const temperature = document.querySelector('.temperature');
   const newTemperature = document.createElement('li');
   newTemperature.classList.add('history');
+  //Also give it a class based on the heating, so we can style it in different colours
+  let tempClass;
+  if (heating === 'Correct') {
+    tempClass = 'correct';
+  }
+  if (heating === 'Boiling') {
+    tempClass = 'boiling';
+  }
+  if (heating === 'Hot') {
+    tempClass = 'hot';
+  }
+  if (heating === 'Warm') {
+    tempClass = 'warm';
+  }
+  if (heating === 'Cold') {
+    tempClass = 'cold';
+  }
+  if (heating === 'Freezing') {
+    tempClass = 'freezing';
+  }
+  newTemperature.classList.add(tempClass);
+
   if(guesses === 1){
     temperature.appendChild(newTemperature);
   } else {
@@ -67,7 +89,7 @@ function outputHeat(heating, guesses) {
     guess.disabled = true;
     submitGuess.disabled = true;
     const endMessage = document.createElement('p');
-    endMessage.textContent = 'Congrats! Refresh the page to play again';
+    endMessage.textContent = 'Congrats! Refresh the page to play again.';
     endMessage.classList.add('congrats');
     document.querySelector('main').insertBefore(endMessage, temperature);
   }

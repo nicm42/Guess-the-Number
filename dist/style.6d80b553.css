@@ -6,11 +6,49 @@ body {
   background-color: #FFFDE7;
   font-family: "Heebo", sans-serif;
   line-height: 1.5;
+  text-align: center;
 }
 
-html {
-  font-size: 1em;
-  font-family: "Heebo", sans-serif;
+p + p {
+  font-style: italic;
+}
+
+input {
+  margin-top: 1.5em;
+  font-size: 1rem;
+}
+
+.temperature {
+  margin: 0;
+  margin-top: 2em;
+  padding: 0;
+  display: inline-block;
+  list-style-type: none;
+  text-align: left;
+}
+
+.correct {
+  font-weight: bold;
+}
+
+.boiling {
+  color: #D32F2F;
+}
+
+.hot {
+  color: #E64A19;
+}
+
+.warm {
+  color: #EF5350;
+}
+
+.cold {
+  color: #0288D1;
+}
+
+.freezing {
+  color: #1976D2;
 }
 
 /*# sourceMappingURL=/style.6d80b553.css.map */

@@ -1,0 +1,33 @@
+.temperature {
+  margin: 0;
+  margin-top: 2em;
+  padding: 0;
+  display: inline-block; //makes it only as wide as it needs to be
+  list-style-type: none;
+  text-align: left;
+}
+
+//Colours for guesses
+.correct {
+  font-weight: bold;
+}
+
+.boiling {
+  color: #D32F2F;
+}
+
+.hot {
+  color: #E64A19;
+}
+
+.warm {
+  color: #EF5350;
+}
+
+.cold {
+  color: #0288D1;
+}
+
+.freezing {
+  color: #1976D2;
+}
