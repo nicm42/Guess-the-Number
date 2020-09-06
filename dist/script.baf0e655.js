@@ -123,7 +123,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 //and only allow a valid number
 document.addEventListener('DOMContentLoaded', function () {
   var guess = document.getElementById('guess');
-  var submit = document.getElementById('submit');
+  var guessing = document.getElementById('guessing');
   var guesses = 0;
   var minNumber = 1;
   var maxNumber = 100; //Generate random number
@@ -144,8 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }); */
   //Get the guess
 
-  submit.addEventListener('submit', function (e) {
-    e.preventDefault();
+  guessing.addEventListener('submit', function (event) {
+    event.preventDefault();
     console.log('Submitting'); //Check number is valid first
     //if (guess.value.match(regex)) {
     //it is, so now check if it's between min and max
@@ -197,6 +197,7 @@ function heat(guess, number) {
 exports.heat = heat;
 
 function outputHeat(heating, guesses) {
+  var submitGuess = document.getElementById('submit-guess');
   var temperature = document.querySelector('.temperature');
   var newTemperature = document.createElement('li');
   newTemperature.classList.add('history');
@@ -213,7 +214,7 @@ function outputHeat(heating, guesses) {
 
   if (heating === 'Correct') {
     guess.disabled = true;
-    submit.disabled = true;
+    submitGuess.disabled = true;
     var endMessage = document.createElement('p');
     endMessage.textContent = 'Congrats! Refresh the page to play again';
     endMessage.classList.add('congrats');
@@ -252,7 +253,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45856" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43642" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

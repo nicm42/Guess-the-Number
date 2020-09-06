@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   const guess = document.getElementById('guess');
-  const submit = document.getElementById('submit');
+  const guessing = document.getElementById('guessing');
 
   let guesses = 0;
   const minNumber = 1;
@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }); */
 
   //Get the guess
-  submit.addEventListener('submit', (e) => {
-    e.preventDefault();
+  guessing.addEventListener('submit', (event) => {
+    event.preventDefault();
     console.log('Submitting')
     //Check number is valid first
     //if (guess.value.match(regex)) {
@@ -75,6 +75,7 @@ function heat(guess,number) {
 exports.heat = heat;
 
 function outputHeat(heating, guesses) {
+  const submitGuess = document.getElementById('submit-guess');
   const temperature = document.querySelector('.temperature');
   const newTemperature = document.createElement('li');
   newTemperature.classList.add('history');
@@ -89,7 +90,7 @@ function outputHeat(heating, guesses) {
 
   if (heating === 'Correct') {
     guess.disabled = true;
-    submit.disabled = true;
+    submitGuess.disabled = true;
     const endMessage = document.createElement('p');
     endMessage.textContent = 'Congrats! Refresh the page to play again';
     endMessage.classList.add('congrats');
