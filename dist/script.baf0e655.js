@@ -118,9 +118,6 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/script.js":[function(require,module,exports) {
-//TODO:
-//check there's something in the form before allowing submit
-//and only allow a valid number
 document.addEventListener('DOMContentLoaded', function () {
   var guess = document.getElementById('guess');
   var guessing = document.getElementById('guessing');
@@ -129,39 +126,18 @@ document.addEventListener('DOMContentLoaded', function () {
   var maxNumber = 100; //Generate random number
 
   var number = generateRandomNumber(minNumber, maxNumber);
-  console.log("number to guess = " + number); //Enable the submit button once you start typing in the input box
-  //TODO what if the first thing they press is one of the up/down buttons
-
-  /* guess.addEventListener('keypress', () => {
-    submit.disabled = false;
-    //And for every character typed, check it's a number
-    //And it's between min and max
-    //typeof data === 'number' && !isNaN(data);
-    console.log(Number.isInteger(guess.value))
-    if (typeof guess.value !== 'number' || isNan(guess.value))   {
-      console.log('Please enter a number')
-    }
-  }); */
-  //Get the guess
+  console.log("number to guess = " + number); //Get the guess
 
   guessing.addEventListener('submit', function (event) {
     event.preventDefault();
-    console.log('Submitting'); //Check number is valid first
-    //if (guess.value.match(regex)) {
-    //it is, so now check if it's between min and max
-    //if (guess.value >= minNumber && guess.value <= maxNumber) {
-
     var heating = heat(guess.value, number);
     guesses++;
-    outputHeat(heating, guesses); //return false;
-    //}
-    //}
+    outputHeat(heating, guesses);
   });
 });
 
 function generateRandomNumber(min, max) {
-  //return Math.floor(Math.random() * (max - min + 1)) + min;
-  return 100;
+  return Math.floor(Math.random() * (max - min + 1)) + min; //return 100; //for testing
 } // eslint-disable-next-line no-undef
 
 
