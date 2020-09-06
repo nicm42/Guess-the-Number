@@ -1,3 +1,8 @@
+@import "variables";
+@import "mixins";
+@import "globals";
+
 html {
   font-size: 1em;
+  font-family: 'Heebo', sans-serif;
 }

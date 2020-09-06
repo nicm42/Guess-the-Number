@@ -1,5 +1,16 @@
 html {
+  font-size: 100%;
+}
+
+body {
+  background-color: #FFFDE7;
+  font-family: "Heebo", sans-serif;
+  line-height: 1.5;
+}
+
+html {
   font-size: 1em;
+  font-family: "Heebo", sans-serif;
 }
 
 /*# sourceMappingURL=/style.6d80b553.css.map */
