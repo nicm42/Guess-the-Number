@@ -31,30 +31,30 @@
 }
 
 .boiling {
-  color: #D32F2F;
+  color: $boiling;
 }
 
 .hot {
-  color: #E64A19;
+  color: $hot;
 }
 
 .warm {
-  color: #EF5350;
+  color: $warm;
 }
 
 .cold {
-  color: #0288D1;
+  color: $cold;
 }
 
 .freezing {
-  color: #1976D2;
+  color: $freezing;
 }
 
 //All the elements in each li
 .history-counter {
   display: inline-block;
   width: 1.5em;
-  color: black;
+  color: $defaultColour;
   text-align: right;
 }
 
@@ -66,13 +66,13 @@
   display: inline-block;
   margin-left: 1em;
   padding: .25em;
-  height: 2em;
-  width: 2em;
-  line-height: 2em;
+  height: $historySize;
+  width: $historySize;
+  line-height: $historySize;
   border-radius: 50%;
   text-align: center;
-  background-color: #fbf39e;
-  color: black;
+  background-color: $historyBackground;
+  color: $defaultColour;
 }
 
 .history-heat {
