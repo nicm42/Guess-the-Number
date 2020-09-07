@@ -215,9 +215,10 @@ function outputHeat(heating, guesses) {
     temperature.insertBefore(newTemperature, firstLI);
   }
 
-  newTemperature.innerHTML = "<span class=\"history-number\">".concat(guesses, "</span> <span class=\"guess-history\">").concat(guess.value, "</span> <span class=\"heating-history\">").concat(heating, "</span>");
+  newTemperature.innerHTML = "<span class=\"history-counter\">".concat(guesses, "</span> <span class=\"history-guess\">").concat(guess.value, "</span> <span class=\"history-heat\">").concat(heating, "</span>");
 
   if (heating === 'Correct') {
+    s;
     guess.disabled = true;
     submitGuess.disabled = true;
     var endMessage = document.createElement('p');

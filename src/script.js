@@ -83,9 +83,9 @@ function outputHeat(heating, guesses) {
     const firstLI = document.querySelector('.history');
     temperature.insertBefore(newTemperature, firstLI);
   }
-  newTemperature.innerHTML = `<span class="history-number">${guesses}</span> <span class="guess-history">${guess.value}</span> <span class="heating-history">${heating}</span>`;
+  newTemperature.innerHTML = `<span class="history-counter">${guesses}</span> <span class="history-guess">${guess.value}</span> <span class="history-heat">${heating}</span>`;
 
-  if (heating === 'Correct') {
+  if (heating === 'Correct') {s
     guess.disabled = true;
     submitGuess.disabled = true;
     const endMessage = document.createElement('p');
