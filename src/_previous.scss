@@ -8,7 +8,7 @@
 }
 
 .history {
-  margin-bottom: .5em;
+  margin-bottom: 1.5em;
   animation: shift 1s ease-in-out forwards;
 }
 
@@ -48,4 +48,17 @@
 
 .freezing {
   color: #1976D2;
+}
+
+//Guess counter
+.history-number {
+  display: inline-block;
+  margin-right: .5em;
+  padding: .25em;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #6a6a6a;
+  color: white;
 }

@@ -55,7 +55,7 @@ button:active {
 }
 
 .history {
-  margin-bottom: 0.5em;
+  margin-bottom: 1.5em;
   -webkit-animation: shift 1s ease-in-out forwards;
           animation: shift 1s ease-in-out forwards;
 }
@@ -107,6 +107,18 @@ button:active {
 
 .freezing {
   color: #1976D2;
+}
+
+.history-number {
+  display: inline-block;
+  margin-right: 0.5em;
+  padding: 0.25em;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #6a6a6a;
+  color: white;
 }
 
 /*# sourceMappingURL=/style.6d80b553.css.map */
