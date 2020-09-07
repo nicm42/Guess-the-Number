@@ -54,6 +54,37 @@ button:active {
   text-align: left;
 }
 
+.history {
+  margin-bottom: 0.5em;
+  -webkit-animation: shift 1s ease-in-out forwards;
+          animation: shift 1s ease-in-out forwards;
+}
+
+@-webkit-keyframes shift {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  to {
+    max-height: 1.5em;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shift {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  to {
+    max-height: 1.5em;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .correct {
   font-weight: bold;
 }

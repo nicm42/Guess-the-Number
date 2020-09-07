@@ -7,6 +7,24 @@
   text-align: left;
 }
 
+.history {
+  margin-bottom: .5em;
+  animation: shift 1s ease-in-out forwards;
+}
+
+@keyframes shift {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  to {
+    max-height: 1.5em;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 //Colours for guesses
 .correct {
   font-weight: bold;
