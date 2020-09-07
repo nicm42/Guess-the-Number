@@ -52,7 +52,10 @@
 
 //All the elements in each li
 .history-counter {
+  display: inline-block;
+  width: 1.5em;
   color: black;
+  text-align: right;
 }
 
 .history-counter::after {

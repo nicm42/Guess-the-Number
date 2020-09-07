@@ -110,7 +110,10 @@ button:active {
 }
 
 .history-counter {
+  display: inline-block;
+  width: 1.5em;
   color: black;
+  text-align: right;
 }
 
 .history-counter::after {
