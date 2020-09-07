@@ -55,7 +55,7 @@ button:active {
 }
 
 .history {
-  margin-bottom: 1.5em;
+  margin-bottom: 2em;
   -webkit-animation: shift 1s ease-in-out forwards;
           animation: shift 1s ease-in-out forwards;
 }
@@ -121,8 +121,9 @@ button:active {
   display: inline-block;
   margin-left: 1em;
   padding: 0.25em;
-  height: 1.5em;
-  width: 1.5em;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
   border-radius: 50%;
   text-align: center;
   background-color: #fbf39e;

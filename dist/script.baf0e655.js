@@ -218,11 +218,11 @@ function outputHeat(heating, guesses) {
   newTemperature.innerHTML = "<span class=\"history-counter\">".concat(guesses, "</span> <span class=\"history-guess\">").concat(guess.value, "</span> <span class=\"history-heat\">").concat(heating, "</span>");
 
   if (heating === 'Correct') {
-    s;
     guess.disabled = true;
     submitGuess.disabled = true;
     var endMessage = document.createElement('p');
-    endMessage.textContent = 'Congrats! Refresh the page to play again.';
+    var guessOrGuesses = guesses === 1 ? 'guess' : 'guesses';
+    endMessage.innerHTML = "Well done! You found the number in ".concat(guesses, " ").concat(guessOrGuesses, ". <br>Refresh the page to play again.");
     endMessage.classList.add('congrats');
     document.querySelector('main').insertBefore(endMessage, temperature);
   }

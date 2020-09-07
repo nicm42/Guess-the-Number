@@ -85,11 +85,12 @@ function outputHeat(heating, guesses) {
   }
   newTemperature.innerHTML = `<span class="history-counter">${guesses}</span> <span class="history-guess">${guess.value}</span> <span class="history-heat">${heating}</span>`;
 
-  if (heating === 'Correct') {s
+  if (heating === 'Correct') {
     guess.disabled = true;
     submitGuess.disabled = true;
     const endMessage = document.createElement('p');
-    endMessage.textContent = 'Congrats! Refresh the page to play again.';
+    const guessOrGuesses = (guesses === 1) ? 'guess' : 'guesses';
+    endMessage.innerHTML = `Well done! You found the number in ${guesses} ${guessOrGuesses}. <br>Refresh the page to play again.`;
     endMessage.classList.add('congrats');
     document.querySelector('main').insertBefore(endMessage, temperature);
   }
