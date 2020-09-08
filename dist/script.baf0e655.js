@@ -118,26 +118,118 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/script.js":[function(require,module,exports) {
-//import '/src/style.scss';
-console.log("test");
-var text = 'hello world';
-console.log(text);
+document.addEventListener('DOMContentLoaded', function () {
+  var guess = document.getElementById('guess');
+  var guessing = document.getElementById('guessing');
+  var guesses = 0;
+  var minNumber = 1;
+  var maxNumber = 100; //Generate random number
 
-function heat(x) {
-  return 'boiling';
-}
+  var number = generateRandomNumber(minNumber, maxNumber);
+  console.log("number to guess = " + number); //Get the guess
+
+  guessing.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var heating = heat(guess.value, number);
+    guesses++;
+    outputHeat(heating, guesses);
+  });
+});
+
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; //return 100; //for testing
+} // eslint-disable-next-line no-undef
+
+
+exports.generateRandomNumber = generateRandomNumber;
+
+function heat(guess, number) {
+  if (Math.abs(guess - number) === 0) {
+    return 'Correct';
+  }
+
+  if (Math.abs(guess - number) === 1) {
+    return 'Boiling';
+  }
+
+  if (Math.abs(guess - number) <= 5) {
+    return 'Hot';
+  }
+
+  if (Math.abs(guess - number) <= 10) {
+    return 'Warm';
+  }
+
+  if (Math.abs(guess - number) <= 74) {
+    return 'Cold';
+  }
+
+  if (Math.abs(guess - number) >= 75) {
+    return 'Freezing';
+  }
+} // eslint-disable-next-line no-undef
+
 
 exports.heat = heat;
-/*
-Pick a random number from 1-100
-Pick up guess from html
-Output whether it's hot or cold:
-  Boiling = within 1%
-  Hot = within 5%
-  Warm = within 10%
-  Cold = between 11 and 94 %
-  Freezing = 95% out
-*/
+
+function outputHeat(heating, guesses) {
+  var submitGuess = document.getElementById('submit-guess');
+  var temperature = document.querySelector('.temperature');
+  var newTemperature = document.createElement('li');
+  newTemperature.classList.add('history'); //Also give it a class based on the heating, so we can style it in different colours
+
+  var tempClass;
+
+  if (heating === 'Correct') {
+    tempClass = 'correct';
+  }
+
+  if (heating === 'Boiling') {
+    tempClass = 'boiling';
+  }
+
+  if (heating === 'Hot') {
+    tempClass = 'hot';
+  }
+
+  if (heating === 'Warm') {
+    tempClass = 'warm';
+  }
+
+  if (heating === 'Cold') {
+    tempClass = 'cold';
+  }
+
+  if (heating === 'Freezing') {
+    tempClass = 'freezing';
+  }
+
+  newTemperature.classList.add(tempClass);
+
+  if (guesses === 1) {
+    temperature.appendChild(newTemperature);
+  } else {
+    //Find first li
+    var firstLI = document.querySelector('.history');
+    temperature.insertBefore(newTemperature, firstLI);
+  }
+
+  newTemperature.innerHTML = "<span class=\"history-counter\">".concat(guesses, "</span> <span class=\"history-guess\">").concat(guess.value, "</span> <span class=\"history-heat\">").concat(heating, "</span>");
+
+  if (heating === 'Correct') {
+    guess.disabled = true;
+    submitGuess.disabled = true;
+    var endMessage = document.createElement('p');
+    var guessOrGuesses = guesses === 1 ? 'guess' : 'guesses';
+    endMessage.innerHTML = "Well done! You found the number in ".concat(guesses, " ").concat(guessOrGuesses, ". <br>Refresh the page to play again.");
+    endMessage.classList.add('congrats');
+    document.querySelector('main').insertBefore(endMessage, temperature);
+  }
+
+  guess.value = '';
+}
+
+exports.outputHeat = outputHeat;
 },{}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -166,7 +258,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40643" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40669" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

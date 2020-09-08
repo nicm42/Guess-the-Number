@@ -4,10 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/style.scss">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
   <title>Guess the Number</title>
 </head>
 <body>
+  <main>
+    <h1>Guess the Number</h1>
+    <p>The computer is thinking of a number between <span class="minmax min">1</span> and <span class="minmax max">100</span> (inclusive).</p>
+    <p>Guess what that number is.</p>
+
+    <form id="guessing">
+      <input type="number" id="guess" name="guess" min="1" max="100" size="4" required aria-label="Guess"></input>
+      <button type="submit" id="submit-guess">Guess</button>
+    </form>
+    
+    <ul class="temperature"></ul>
+  </main>
+
   <script src="./src/script.js"></script>
-  <p>Some text here</p>
 </body>
 </html>

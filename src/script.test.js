@@ -1,21 +1,116 @@
+const puppeteer = require('puppeteer');
 const {
-  heat
+  heat,
+  generateRandomNumber,
+  outputHeat
 } = require('./script');
 
-
-test('outputs boiling if guess is within 1% of number', () => {
-  const number = 50;
-  const guess = 51;
-  expect(heat(guess)).toBe('boiling');
+it('outputs correct if guess is correct', () => {
+  expect(heat(100, 100)).toBe('Correct');
+  expect(heat(50, 50)).toBe('Correct');
 });
 
-/*
-Pick a random number from 1-100
-Pick up guess from html
-Output whether it's hot or cold:
-  Boiling = within 1%
-  Hot = within 5%
-  Warm = within 10%
-  Cold = between 11 and 94 %
-  Freezing = 95% out
-*/
+it('outputs boiling if guess is within 1', () => {
+  expect(heat(99, 100)).toBe('Boiling');
+  expect(heat(49, 50)).toBe('Boiling');
+});
+
+it('outputs hot if guess is within 5', () => {
+  expect(heat(98, 100)).toBe('Hot');
+  expect(heat(95, 100)).toBe('Hot');
+  expect(heat(45, 50)).toBe('Hot');
+  expect(heat(55, 50)).toBe('Hot');
+});
+
+it('outputs warm if guess is within 10', () => {
+  expect(heat(90, 100)).toBe('Warm');
+  expect(heat(94, 100)).toBe('Warm');
+  expect(heat(40, 50)).toBe('Warm');
+  expect(heat(60, 50)).toBe('Warm');
+});
+
+it('outputs cold if guess is within 50', () => {
+  expect(heat(50, 100)).toBe('Cold');
+  expect(heat(51, 100)).toBe('Cold');
+  expect(heat(39, 50)).toBe('Cold');
+  expect(heat(61, 50)).toBe('Cold');
+  expect(heat(1, 50)).toBe('Cold');
+  expect(heat(100, 50)).toBe('Cold');
+});
+
+it('outputs freezing if guess is 75 or more out', () => {
+  expect(heat(25, 100)).toBe('Freezing');
+  expect(heat(1, 100)).toBe('Freezing');
+});
+
+
+it('generates a random number between min and max', () => {
+  expect(generateRandomNumber(1, 100)).toBeGreaterThanOrEqual(1);
+  expect(generateRandomNumber(1, 100)).toBeLessThanOrEqual(100);
+  expect(generateRandomNumber(500, 600)).toBeGreaterThanOrEqual(500);
+  expect(generateRandomNumber(500, 600)).toBeLessThanOrEqual(600);
+});
+
+it.only('creates a new li element with the temperature when submit is clicked', () => {
+  // Set up our document body
+  document.body.innerHTML =
+    `<button id="submit" />
+    <ul id="temperature"></ul>`;
+  //jest.mock('generateRandomNumber');
+  //generateRandomNumber.mockImplementation(() => 100);
+  //outputHeat.mockImplementation(() => 50);
+  //const mockGenerateRandomNumber = jest.fn(() => 100);
+  //const mockOutputHeat = jest.fn(() => 50);
+  //Pretend we've clicked the button
+  const temp = document.getElementById('temperature');
+  document.getElementById('submit').click();
+  //expect(outputHeat).toBeCalled();
+  expect(temperature.innerHTML).toBe('<span class="history-number">1</span> <span class="guess-history">50</span> <span class="heating-history">Cold</span>');
+});
+
+/* test('should add temperature below the input', async () => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    //slowMo: 80,
+    //args: ['--window-size=1920,1080']
+  });
+  const page = await browser.newPage();
+  await page.goto('file:///home/paranoidangel/Projects/Guess the number/dist/index.html');
+  await page.click('input#guess');
+  await page.type('input#guess', '50');
+  await page.click('#submit');
+  const temperature = await page.$eval('.temperature', element => element.innerText = 'Cold');
+  expect(temperature).toBe('Cold');
+  await page.screenshot({
+    path: 'test.png'
+  })
+}, 10000); */
+
+/* test('should add message if guess is correct', async () => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    //slowMo: 80,
+    //args: ['--window-size=1920,1080']
+  });
+  const page = await browser.newPage();
+  await page.goto('file:///home/paranoidangel/Projects/Guess the number/dist/index.html');
+  await page.click('input#guess');
+  await page.type('input#guess', '100');
+  await page.click('#submit');
+  //await page.waitForSelector('.congrats');
+  const newText = await page.$eval('.congrats', element => element.textContent);
+  expect(newText).toBe('Congrats! Refresh the page to play again');
+  await page.screenshot({
+    path: 'test2.png'
+  })
+}, 10000); */
+
+/* describe('Google', () => {
+  beforeAll(async () => {
+    await page.goto('https://google.co.uk');
+  });
+
+  it('should be titled "Google"', async () => {
+    await expect(page.title()).resolves.toMatch('Google');
+  });
+}); */
