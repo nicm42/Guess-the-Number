@@ -34,7 +34,7 @@ A standard guess the number between 1 and 100 game. However, it won't tell you w
 * Accessibility testing with Cypress
 
 ## Setup
-To view this project visit the [demo](https://click-the-shape.nicm42.co.uk/) or download the files and open index.html
+To view this project visit the [demo](https://guess-the-number.nicm42.co.uk/) or download the files and open index.html
 
 ## Features
 * Secret cheat
