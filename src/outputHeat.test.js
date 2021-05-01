@@ -72,16 +72,30 @@ describe('guess is correct', () => {
     document.body.innerHTML = `<main>
       <input id="guess" value="33" />
       <button id="submit-guess" />
+      <p class="congrats"></p>
       <ul class="temperature"></ul>
       </main>`;
   });
 
   it('creates a new li element for correct', () => {
     const temperature = document.querySelector('.temperature');
-    const main = document.querySelector('main');
+    const endMessage = document.querySelector('.congrats');
     outputHeat('Correct', 1);
     expect(temperature.innerHTML).toBe(
       '<li class="history correct"><span class="history-counter">1</span> <span class="history-guess">33</span> <span class="history-heat">Correct</span></li>'
+    );
+  });
+
+  it('adds text for correct', () => {
+    const temperature = document.querySelector('.temperature');
+    const endMessage = document.querySelector('.congrats');
+    outputHeat('Correct', 1);
+    expect(endMessage.innerHTML).toBe(
+      'Well done! You found the number in 1 guess. <br>Refresh the page to play again.'
+    );
+    outputHeat('Correct', 2);
+    expect(endMessage.innerHTML).toBe(
+      'Well done! You found the number in 2 guesses. <br>Refresh the page to play again.'
     );
   });
 

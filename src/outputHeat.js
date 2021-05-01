@@ -38,11 +38,9 @@ function outputHeat(heating, guesses) {
   if (heating === 'Correct') {
     guess.disabled = true;
     submitGuess.disabled = true;
-    const endMessage = document.createElement('p');
+    const endMessage = document.querySelector('.congrats');
     const guessOrGuesses = guesses === 1 ? 'guess' : 'guesses';
     endMessage.innerHTML = `Well done! You found the number in ${guesses} ${guessOrGuesses}. <br>Refresh the page to play again.`;
-    endMessage.classList.add('congrats');
-    document.querySelector('main').insertBefore(endMessage, temperature);
   }
 
   guess.value = '';
