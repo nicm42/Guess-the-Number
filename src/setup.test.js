@@ -3,7 +3,9 @@
 require('@testing-library/jest-dom/extend-expect');
 //require('./script');
 //const { generateRandomNumber } = require('./generateRandomNumber');
-//const { setup } = require('./setup');
+const { setup } = require('./setup');
+
+generateRandomNumber = jest.fn();
 
 describe('script setup', () => {
   beforeEach(() => {
@@ -19,19 +21,9 @@ describe('script setup', () => {
     expect(true).toBeTruthy;
   });
 
-  /* it('should generate a random number', () => {
-    document.addEventListener = jest
-      .fn()
-      .mockImplementationOnce((event, callback) => {
-        callback();
-      });
-    expect(document.addEventListener).toBeCalledWith(
-      'DOMContentLoaded',
-      expect.any(Function)
-    );
-    //generateRandomNumber = jest.fn();
-    //expect(generateRandomNumber).toBeCalled();
-  }); */
+  it('should generate a random number', () => {
+    expect(generateRandomNumber).toBeCalled();
+  });
 });
 
 /* it.only('creates a new li element with the temperature when submit is clicked', () => {
