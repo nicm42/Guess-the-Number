@@ -17,6 +17,7 @@ function heat(guess, number) {
   if (Math.abs(guess - number) >= 75) {
     return 'Freezing';
   }
+  return false;
 }
 // eslint-disable-next-line no-undef
 exports.heat = heat;

@@ -25,17 +25,19 @@ describe('outputs', () => {
     expect(heat(60, 50)).toBe('Warm');
   });
 
-  it('outputs cold if guess is within 50', () => {
-    expect(heat(50, 100)).toBe('Cold');
-    expect(heat(51, 100)).toBe('Cold');
+  it('outputs cold if guess is within 74', () => {
+    expect(heat(89, 100)).toBe('Cold');
+    expect(heat(26, 100)).toBe('Cold');
     expect(heat(39, 50)).toBe('Cold');
     expect(heat(61, 50)).toBe('Cold');
-    expect(heat(1, 50)).toBe('Cold');
-    expect(heat(100, 50)).toBe('Cold');
   });
 
   it('outputs freezing if guess is 75 or more out', () => {
     expect(heat(25, 100)).toBe('Freezing');
     expect(heat(1, 100)).toBe('Freezing');
+  });
+
+  it('tests if none of the conditions are true', () => {
+    expect(heat()).toBeFalsy();
   });
 });
