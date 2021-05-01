@@ -3,7 +3,6 @@ const { heat } = require('./heat');
 const { outputHeat } = require('./outputHeat');
 
 function setup() {
-  console.log('Running script');
   const guess = document.getElementById('guess');
   const guessing = document.getElementById('guessing');
 

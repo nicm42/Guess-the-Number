@@ -1,11 +1,13 @@
-//require('jsdom');
-//const { screen, fireEvent } = require('@testing-library/dom');
+const { fireEvent } = require('@testing-library/dom');
 require('@testing-library/jest-dom/extend-expect');
-//require('./script');
-//const { generateRandomNumber } = require('./generateRandomNumber');
 const { setup } = require('./setup');
+const { generateRandomNumber } = require('./generateRandomNumber');
+const { heat } = require('./heat');
+const { outputHeat } = require('./outputHeat');
 
-generateRandomNumber = jest.fn();
+jest.mock('./generateRandomNumber');
+jest.mock('./heat');
+jest.mock('./outputHeat');
 
 describe('script setup', () => {
   beforeEach(() => {
@@ -15,41 +17,17 @@ describe('script setup', () => {
       <button id="submit-guess" />
       <ul class="temperature"></ul>
       </form>`;
-  });
-
-  it('has a dummy test', () => {
-    expect(true).toBeTruthy;
+    setup();
   });
 
   it('should generate a random number', () => {
     expect(generateRandomNumber).toBeCalled();
   });
+
+  it('should run heat and outputHeat functions when button is clicked', () => {
+    const form = document.getElementById('guessing');
+    fireEvent.submit(form);
+    expect(heat).toBeCalled();
+    expect(outputHeat).toBeCalled();
+  });
 });
-
-/* it.only('creates a new li element with the temperature when submit is clicked', () => {
-  // Set up our document body
-  document.body.innerHTML = `<button id="submit-guess" />
-    <ul id="temperature"></ul>`;
-  const temp = document.getElementById('temperature');
-  document.getElementById('submit-guess').click();
-  //expect(outputHeat).toBeCalled();
-  expect(temperature.innerHTML).toBe(
-    '<span class="history-counter">1</span> <span class="history-guess">50</span> <span class="history-heat">Cold</span>'
-  );
-});*/
-
-/* it.only('creates a new li element with the temperature when submit is clicked', () => {
-  document.body.innerHTML = `<button id="submit-guess" />
-    <ul id="temperature"></ul>`;
-  //const submit = document.body.querySelector('submit-guess');
-  //const container = document.querySelector('#guessing');
-  //const submit = screen.getByRole('button');
-  //const submit = getByText(container, 'Guess');
-  const submit = document.getElementById('submit-guess');
-  const temperature = document.getElementById('temperature');
-  //fireEvent.click(submit);
-  submit.click();
-  expect(temperature.innerHTML).toBe(
-    '<span class="history-counter">1</span> <span class="history-guess">50</span> <span class="history-heat">Cold</span>'
-  );
-}); */
