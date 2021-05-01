@@ -11,3 +11,4 @@ cypress/videos
 /dist/*.css.map
 test*.png
 dist/
+coverage/
