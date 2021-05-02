@@ -1,6 +1,6 @@
 export default function outputHeat(heating: string, guesses: number): void {
-  const guess = <HTMLInputElement>document.getElementById('guess');
-  const submitGuess = <HTMLInputElement>document.getElementById('submit-guess');
+  const guess = <HTMLInputElement>document.querySelector('.guess');
+  const submitGuess = <HTMLInputElement>document.querySelector('.submit-guess');
   const temperature = document.querySelector('.temperature');
 
   const newTemperature = document.createElement('li');

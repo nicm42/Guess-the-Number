@@ -6,8 +6,8 @@
   "scripts": {
     "start": "parcel serve index.html --open",
     "build": "parcel build index.html",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
     "test": "jest --watchAll"
   },
   "repository": {
@@ -29,8 +29,7 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@types/jest": "^26.0.23",
     "babel-jest": "^26.6.3",
-    "cypress": "^4.12.1",
-    "cypress-axe": "^0.8.1",
+    "cypress": "^7.2.0",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
