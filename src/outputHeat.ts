@@ -22,9 +22,10 @@ export default function outputHeat(heating: string, guesses: number): void {
   if (heating === 'Correct') {
     guess.disabled = true;
     submitGuess.disabled = true;
-    const endMessage = document.querySelector('.congrats');
+    const endMessage = <HTMLInputElement>document.querySelector('.congrats');
     const guessOrGuesses = guesses === 1 ? 'guess' : 'guesses';
     endMessage.innerHTML = `Well done! You found the number in ${guesses} ${guessOrGuesses}. <br>Refresh the page to play again.`;
+    endMessage.style.opacity = '1';
   }
 
   guess.value = '';
