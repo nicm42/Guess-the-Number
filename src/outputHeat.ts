@@ -2,28 +2,12 @@ export default function outputHeat(heating: string, guesses: number): void {
   const guess = <HTMLInputElement>document.getElementById('guess');
   const submitGuess = <HTMLInputElement>document.getElementById('submit-guess');
   const temperature = document.querySelector('.temperature');
+
   const newTemperature = document.createElement('li');
   newTemperature.classList.add('history');
+
   //Also give it a class based on the heating, so we can style it in different colours
-  let tempClass: string;
-  if (heating === 'Correct') {
-    tempClass = 'correct';
-  }
-  if (heating === 'Boiling') {
-    tempClass = 'boiling';
-  }
-  if (heating === 'Hot') {
-    tempClass = 'hot';
-  }
-  if (heating === 'Warm') {
-    tempClass = 'warm';
-  }
-  if (heating === 'Cold') {
-    tempClass = 'cold';
-  }
-  if (heating === 'Freezing') {
-    tempClass = 'freezing';
-  }
+  let tempClass: string = heating.toLowerCase();
   newTemperature.classList.add(tempClass);
 
   if (guesses === 1) {
