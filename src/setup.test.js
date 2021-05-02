@@ -12,10 +12,12 @@ jest.mock('./outputHeat');
 describe('script setup', () => {
   beforeEach(() => {
     // Set up our document body
-    document.body.innerHTML = `<form class="guessing" id="guessing">
-      <input id="guess" class="guess" value="33" />
-      <button id="submit-guess" />
-      <ul class="temperature"></ul>
+    document.body.innerHTML = `
+      <span class="min"></span>
+      <span class="max"></span>
+      <form class="guessing" id="guessing">
+        <input id="guess" class="guess" value="33" />
+        <button id="submit-guess" />
       </form>`;
     setup();
   });
@@ -25,7 +27,8 @@ describe('script setup', () => {
   });
 
   it('should run heat and outputHeat functions when button is clicked', () => {
-    const form = document.getElementById('guessing');
+    const form = document.querySelector('.guessing');
+    const guess = document.querySelector('.guess');
     fireEvent.submit(form);
     expect(heat).toBeCalled();
     expect(outputHeat).toBeCalled();

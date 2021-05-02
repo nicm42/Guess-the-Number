@@ -10,6 +10,17 @@ export default function setup(): void {
   const minNumber: number = 1;
   const maxNumber: number = 100;
 
+  //Set the instructions to include this min and max number
+  const minSpan = <HTMLElement>document.querySelector('.min');
+  const maxSpan = <HTMLElement>document.querySelector('.max');
+  minSpan.innerHTML = minNumber.toString();
+  maxSpan.innerHTML = maxNumber.toString();
+
+  //And update the input
+  guess.setAttribute('min', minNumber.toString());
+  guess.setAttribute('max', maxNumber.toString());
+  guess.setAttribute('size', (maxNumber.toString().length + 1).toString());
+
   //Generate random number
   const numberToGuess: number = generateRandomNumber(minNumber, maxNumber);
   console.log('number to guess = ' + numberToGuess);

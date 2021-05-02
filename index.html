@@ -10,12 +10,12 @@
 <body>
   <main>
     <h1>Guess the Number</h1>
-    <p>The computer is thinking of a number between <span class="minmax min">1</span> and <span class="minmax max">100</span> (inclusive).</p>
+    <p>The computer is thinking of a number between <span class="minmax min"></span> and <span class="minmax max"></span> (inclusive).</p>
     <p>Guess what that number is.</p>
 
     <form class="guessing">
       <label for="guess" class="guess-label">Type a number</label>
-      <input type="number" inputmode="numeric" pattern="[0-9]*" id="guess" name="guess" class="guess" min="1" max="100" size="4" required aria-label="Guess"></input>
+      <input type="number" inputmode="numeric" pattern="[0-9]*" id="guess" name="guess" class="guess" required aria-label="Guess"></input>
       <button type="submit" id="submit-guess">Guess</button>
     </form>
 
