@@ -3,8 +3,8 @@ import heat from './heat';
 import outputHeat from './outputHeat';
 
 export default function setup(): void {
-  const guess = <HTMLInputElement>document.getElementById('guess');
-  const guessing = document.getElementById('guessing');
+  const guess = <HTMLInputElement>document.querySelector('.guess');
+  const guessing = <HTMLElement>document.querySelector('.guessing');
 
   let guesses: number = 0;
   const minNumber: number = 1;

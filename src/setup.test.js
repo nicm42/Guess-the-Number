@@ -12,8 +12,8 @@ jest.mock('./outputHeat');
 describe('script setup', () => {
   beforeEach(() => {
     // Set up our document body
-    document.body.innerHTML = `<form id="guessing">
-      <input id="guess" value="33" />
+    document.body.innerHTML = `<form class="guessing" id="guessing">
+      <input id="guess" class="guess" value="33" />
       <button id="submit-guess" />
       <ul class="temperature"></ul>
       </form>`;

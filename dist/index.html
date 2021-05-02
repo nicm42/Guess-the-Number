@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/index.41d85855.css">
+  <link rel="stylesheet" href="/style.6d80b553.css">
   <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
   <title>Guess the Number</title>
-</head>
+<script src="/style.6d80b553.js"></script></head>
 <body>
   <main>
     <h1>Guess the Number</h1>
     <p>The computer is thinking of a number between <span class="minmax min">1</span> and <span class="minmax max">100</span> (inclusive).</p>
     <p>Guess what that number is.</p>
 
-    <form id="guessing">
-      <input type="number" inputmode="numeric" pattern="[0-9]*" id="guess" name="guess" min="1" max="100" size="4" required="" aria-label="Guess">
+    <form class="guessing">
+      <label for="guess" class="guess-label">Type a number</label>
+      <input type="number" inputmode="numeric" pattern="[0-9]*" id="guess" name="guess" class="guess" min="1" max="100" size="4" required="" aria-label="Guess">
       <button type="submit" id="submit-guess">Guess</button>
     </form>
 
@@ -23,6 +24,6 @@
     <ul class="temperature"></ul>
   </main>
 
-  <script src="/index.2ebd6ef9.js"></script>
+  <script src="/script.66fca108.js"></script>
 </body>
 </html>
