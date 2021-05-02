@@ -1,3 +1,5 @@
+@use './variables' as v;
+
 .temperature {
   margin: 0;
   margin-top: 2.5em;
@@ -31,30 +33,30 @@
 }
 
 .boiling {
-  color: $boiling;
+  color: v.$boiling;
 }
 
 .hot {
-  color: $hot;
+  color: v.$hot;
 }
 
 .warm {
-  color: $warm;
+  color: v.$warm;
 }
 
 .cold {
-  color: $cold;
+  color: v.$cold;
 }
 
 .freezing {
-  color: $freezing;
+  color: v.$freezing;
 }
 
 //All the elements in each li
 .history-counter {
   display: inline-block;
   width: 1.5em;
-  color: $defaultColour;
+  color: v.$defaultColour;
   text-align: right;
 }
 
@@ -65,14 +67,14 @@
 .history-guess {
   display: inline-block;
   margin-left: 1em;
-  padding: .25em;
-  height: $historySize;
-  width: $historySize;
-  line-height: $historySize;
+  padding: 0.25em;
+  height: v.$historySize;
+  width: v.$historySize;
+  line-height: v.$historySize;
   border-radius: 50%;
   text-align: center;
-  background-color: $historyBackground;
-  color: $defaultColour;
+  background-color: v.$historyBackground;
+  color: v.$defaultColour;
 }
 
 .history-heat {
