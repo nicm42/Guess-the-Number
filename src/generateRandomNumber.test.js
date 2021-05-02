@@ -1,4 +1,4 @@
-const { generateRandomNumber } = require('./generateRandomNumber');
+import generateRandomNumber from './generateRandomNumber';
 
 describe('random number generation', () => {
   it('generates a random number between min and max', () => {

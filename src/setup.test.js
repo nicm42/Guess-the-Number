@@ -1,9 +1,9 @@
-const { fireEvent } = require('@testing-library/dom');
-require('@testing-library/jest-dom/extend-expect');
-const { setup } = require('./setup');
-const { generateRandomNumber } = require('./generateRandomNumber');
-const { heat } = require('./heat');
-const { outputHeat } = require('./outputHeat');
+import { fireEvent } from '@testing-library/dom';
+import '@testing-library/jest-dom/extend-expect';
+import setup from './setup';
+import generateRandomNumber from './generateRandomNumber';
+import heat from './heat';
+import outputHeat from './outputHeat';
 
 jest.mock('./generateRandomNumber');
 jest.mock('./heat');

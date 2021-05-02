@@ -1,4 +1,4 @@
-const { heat } = require('./heat');
+import heat from './heat';
 
 describe('outputs', () => {
   it('outputs correct if guess is correct', () => {

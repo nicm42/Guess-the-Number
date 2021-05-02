@@ -2,7 +2,7 @@ import generateRandomNumber from './generateRandomNumber';
 import heat from './heat';
 import outputHeat from './outputHeat';
 
-function setup(): void {
+export default function setup(): void {
   const guess = <HTMLInputElement>document.getElementById('guess');
   const guessing = document.getElementById('guessing');
 
@@ -22,5 +22,3 @@ function setup(): void {
     outputHeat(heating, guesses);
   });
 }
-
-exports.setup = setup;

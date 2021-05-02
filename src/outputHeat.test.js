@@ -1,5 +1,5 @@
-const { outputHeat } = require('./outputHeat');
-require('@testing-library/jest-dom/extend-expect');
+import '@testing-library/jest-dom/extend-expect';
+import outputHeat from './outputHeat';
 
 describe('dom changes', () => {
   beforeEach(() => {
