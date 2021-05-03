@@ -1,0 +1,163 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: #fcfae9;
+  font-family: "Heebo", sans-serif;
+  line-height: 1.5;
+  text-align: center;
+}
+
+p + p {
+  font-style: italic;
+}
+
+.minmax {
+  position: relative;
+}
+
+.minmax::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: 3px;
+  height: 3px;
+  background-color: #babccf;
+}
+
+.min::after {
+  width: 0.5em;
+}
+
+.max::after {
+  width: 1.5em;
+}
+
+.congrats {
+  margin-top: 2em;
+  font-size: 1.3em;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+input {
+  margin-top: 1.5em;
+  padding: 0.4em;
+  font-size: 1rem;
+}
+
+button {
+  margin-left: 0.5em;
+  padding: 0.5em 1em;
+  border: 1px solid #babccf;
+  border-radius: 0.25em;
+  background-color: #e6e8ff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #dbddf0;
+}
+
+button:active {
+  position: relative;
+  left: 2px;
+  top: 2px;
+  color: black;
+}
+
+.temperature {
+  margin: 0;
+  margin-top: 2.5em;
+  padding: 0;
+  display: inline-block;
+  list-style-type: none;
+  text-align: left;
+}
+
+.history {
+  margin-bottom: 2em;
+  -webkit-animation: shift 1s ease-in-out forwards;
+          animation: shift 1s ease-in-out forwards;
+}
+
+@-webkit-keyframes shift {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  to {
+    max-height: 1.5em;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shift {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  to {
+    max-height: 1.5em;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.correct {
+  font-weight: bold;
+}
+
+.boiling {
+  color: #7e0101;
+}
+
+.hot {
+  color: #ad0300;
+}
+
+.warm {
+  color: #e30602;
+}
+
+.cold {
+  color: #0054a8;
+}
+
+.freezing {
+  color: #003d7a;
+}
+
+.history-counter {
+  display: inline-block;
+  width: 1.5em;
+  color: black;
+  text-align: right;
+}
+
+.history-counter::after {
+  content: ")";
+}
+
+.history-guess {
+  display: inline-block;
+  margin-left: 1em;
+  padding: 0.25em;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #fbf39d;
+  color: black;
+}
+
+.history-heat {
+  padding-left: 1em;
+}
+/*# sourceMappingURL=index.41d85855.css.map */
