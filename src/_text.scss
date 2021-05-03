@@ -1,3 +1,5 @@
+@use './variables' as v;
+
 p + p {
   font-style: italic;
 }
@@ -12,11 +14,11 @@ p + p {
   left: -2px;
   bottom: 3px;
   height: 3px;
-  background-color: $buttonBorder;
+  background-color: v.$buttonBorder;
 }
 
 .min::after {
-  width: .5em;
+  width: 0.5em;
 }
 
 .max::after {
@@ -26,4 +28,6 @@ p + p {
 .congrats {
   margin-top: 2em;
   font-size: 1.3em;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 }

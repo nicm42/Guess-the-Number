@@ -1,9 +1,11 @@
+@use './variables' as v;
+
 html {
   font-size: 100%;
 }
 
 body {
-  background-color: $background;
+  background-color: v.$background;
   font-family: 'Heebo', sans-serif;
   line-height: 1.5;
   text-align: center;

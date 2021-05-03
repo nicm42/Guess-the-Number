@@ -117,79 +117,161 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"src/generateRandomNumber.ts":[function(require,module,exports) {
+"use strict";
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function generateRandomNumber(min, max) {
+  //return 100; //for testing
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+exports.default = generateRandomNumber;
+},{}],"src/heat.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function heat(guess, numberToGuess) {
+  if (Math.abs(guess - numberToGuess) === 0) {
+    return 'Correct';
   }
 
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
+  if (Math.abs(guess - numberToGuess) === 1) {
+    return 'Boiling';
   }
 
-  return '/';
+  if (Math.abs(guess - numberToGuess) <= 5) {
+    return 'Hot';
+  }
+
+  if (Math.abs(guess - numberToGuess) <= 10) {
+    return 'Warm';
+  }
+
+  if (Math.abs(guess - numberToGuess) <= 74) {
+    return 'Cold';
+  }
+
+  if (Math.abs(guess - numberToGuess) >= 75) {
+    return 'Freezing';
+  }
+
+  return '';
 }
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+exports.default = heat;
+},{}],"src/outputHeat.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function outputHeat(heating, guesses) {
+  var guess = document.querySelector('.guess');
+  var submitGuess = document.querySelector('.submit-guess');
+  var temperature = document.querySelector('.temperature');
+  var newTemperature = document.createElement('li');
+  newTemperature.classList.add('history'); //Also give it a class based on the heating, so we can style it in different colours
+
+  var tempClass = heating.toLowerCase();
+  newTemperature.classList.add(tempClass);
+
+  if (guesses === 1) {
+    temperature.appendChild(newTemperature);
+  } else {
+    //Find first li
+    var firstLI = document.querySelector('.history');
+    temperature.insertBefore(newTemperature, firstLI);
+  }
+
+  newTemperature.innerHTML = "<span class=\"history-counter\">" + guesses + "</span> <span class=\"history-guess\">" + guess.value + "</span> <span class=\"history-heat\">" + heating + "</span>";
+
+  if (heating === 'Correct') {
+    guess.disabled = true;
+    submitGuess.disabled = true;
+    var endMessage = document.querySelector('.congrats');
+    var guessOrGuesses = guesses === 1 ? 'guess' : 'guesses';
+    endMessage.innerHTML = "Well done! You found the number in " + guesses + " " + guessOrGuesses + ". <br>Refresh the page to play again.";
+    endMessage.style.opacity = '1';
+  }
+
+  guess.value = '';
 }
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
+exports.default = outputHeat;
+},{}],"src/setup.ts":[function(require,module,exports) {
+"use strict";
 
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
   };
+};
 
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var generateRandomNumber_1 = __importDefault(require("./generateRandomNumber"));
+
+var heat_1 = __importDefault(require("./heat"));
+
+var outputHeat_1 = __importDefault(require("./outputHeat"));
+
+function setup() {
+  var guess = document.querySelector('.guess');
+  var guessing = document.querySelector('.guessing');
+  var guesses = 0;
+  var minNumber = 1;
+  var maxNumber = 100; //Set the instructions to include this min and max number
+
+  var minSpan = document.querySelector('.min');
+  var maxSpan = document.querySelector('.max');
+  minSpan.innerHTML = minNumber.toString();
+  maxSpan.innerHTML = maxNumber.toString(); //And update the input
+
+  guess.setAttribute('min', minNumber.toString());
+  guess.setAttribute('max', maxNumber.toString());
+  guess.setAttribute('size', (maxNumber.toString().length + 1).toString()); //Generate random number
+
+  var numberToGuess = generateRandomNumber_1.default(minNumber, maxNumber);
+  console.log('number to guess = ' + numberToGuess); //Get the guess
+
+  guessing.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var heating = heat_1.default(parseInt(guess.value), numberToGuess);
+    guesses++;
+    outputHeat_1.default(heating, guesses);
+  });
 }
 
-var cssTimeout = null;
+exports.default = setup;
+},{"./generateRandomNumber":"src/generateRandomNumber.ts","./heat":"src/heat.ts","./outputHeat":"src/outputHeat.ts"}],"src/script.ts":[function(require,module,exports) {
+"use strict";
 
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
+var setup_1 = __importDefault(require("./setup"));
 
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/style.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+document.addEventListener('DOMContentLoaded', function () {
+  setup_1.default();
+});
+},{"./setup":"src/setup.ts"}],"../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +475,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/style.6d80b553.js.map
+},{}]},{},["../../../../usr/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/script.ts"], null)
+//# sourceMappingURL=/script.66fca108.js.map

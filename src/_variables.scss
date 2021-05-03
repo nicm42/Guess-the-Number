@@ -1,17 +1,17 @@
 $standardFontSize: 1rem;
 
-$background: #FFFDE7;
-$defaultColour: black;
+$background: hsl(55, 75%, 95%);
+$defaultColour: hsl(0, 0%, 0%);
 
-$buttonBackground: #e7e9ff;
-$buttonBorder: #bbbdd0;
-$buttonHover: #dadcef;
+$buttonBackground: hsl(235, 100%, 95%);
+$buttonBorder: hsl(234, 18%, 77%);
+$buttonHover: hsl(234, 40%, 90%);
 
-$historyBackground: #fbf39e;
+$historyBackground: hsl(55, 92%, 80%);
 $historySize: 2em;
 
-$boiling: #D32F2F;
-$hot: #E64A19;
-$warm: #EF5350;
-$cold: #0288D1;
-$freezing: #1976D2;
+$boiling: hsl(0, 98%, 25%);
+$hot: hsl(1, 100%, 34%);
+$warm: hsl(1, 98%, 45%);
+$cold: hsl(210, 100%, 33%);
+$freezing: hsl(210, 100%, 24%);

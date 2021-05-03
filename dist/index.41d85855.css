@@ -108,6 +108,7 @@ button:active {
     transform: translateY(0);
   }
 }
+
 .correct {
   font-weight: bold;
 }
@@ -159,5 +160,4 @@ button:active {
 .history-heat {
   padding-left: 1em;
 }
-
-/*# sourceMappingURL=/style.6d80b553.css.map */
+/*# sourceMappingURL=index.41d85855.css.map */
