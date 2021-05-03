@@ -35,13 +35,13 @@ A standard guess the number between 1 and 100 game. However, it won't tell you w
 * TypeScript
 
 ## Setup
-To view this project visit the [demo](https://guess-the-number.nicm42.co.uk/) or download the files and open index.html
+To view this project visit the [demo](https://guess-the-number.nicm42.co.uk/) or download the files and open dist/index.html
 
 ## Features
 * Secret cheat
 
 ## Status
-Project is: _in progress_ 
+Project is: _finished_ 
 
 ## Contact
 Created by [nicm42](https://www.twitter.com/nicm4242) - feel free to contact me!
