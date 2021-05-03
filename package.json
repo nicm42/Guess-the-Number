@@ -2,10 +2,10 @@
   "name": "guess-the-number",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "dist/index.html",
   "scripts": {
     "start": "parcel serve ./src/index.html --open",
-    "build": "parcel build ./src/index.html",
+    "build": "parcel build ./src/index.html --public-url ./",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "test": "jest --watchAll"
