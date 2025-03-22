@@ -35,7 +35,7 @@ A standard guess the number between 1 and 100 game. However, it won't tell you w
 * TypeScript
 
 ## Setup
-To view this project visit the [demo](https://guess-the-number.nicm42.co.uk/) or download the files and open dist/index.html
+To view this project visit the [demo](https://guess-the-number-nm.netlify.app/) or download the files and open dist/index.html
 
 ## Features
 * Secret cheat
